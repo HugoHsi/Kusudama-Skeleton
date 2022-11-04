@@ -1,0 +1,85 @@
+/* introduction */
+.container {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: mufferaw, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 8vw;
+  transition: 300ms ease all;
+}
+
+.title:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.intro {
+  font-family: komet, sans-serif;
+font-weight: 400;
+font-style: normal;
+  font-size: 2rem;
+  transition: 300ms ease all;
+}
+
+.fade {
+    opacity: 0;
+}
+
+.button-container {
+  display: flex;
+  font-size: 2rem;
+}
+
+/* selection */
+.menu {
+  position: fixed;
+  transition: 300ms ease all;
+  width: 100px;
+    height: 100px;
+    background: linear-gradient(to bottom right, red 0%, red 50%, white 50%, white 100%);
+}
+
+.activated {
+ background: red;
+ width: 200px;
+ height: 100vh;
+}
+
+#heading {
+  font-family: mufferaw, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 50px;
+}
+
+
+.menu-button {
+  display: none;
+}
+
+#model-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+padding-top: 100px;
+}
+
+.model-card {
+  width: 300px;
+  height: auto;
+  border: 2px black solid;
+  transition: 300ms ease all;
+}
+
+.model-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px;
+}
