@@ -1,69 +1,33 @@
-// Declaring Variables
-let container = document.querySelector('.container');
-let buttonContainer = document.querySelector('.button-container')
-let i = 0;
-let intro;
-let back;
-let next;
+let modelCardContainer = document.querySelector('#model-card-container');
+let menu = document.querySelector('.menu');
+let selectedModel;
 
-let introText = [
-  "A Kusudama is an origami model comprised of multiple identical pieces.",
-  "These pieces slot into each other in the form of flaps and pockets.",
-  "Assembly of these models almost always comprises of creating pyramids comprised of 3 pieces, followed by combining 5 of these pyramids into a 5 pointed star shape.",
-  "This pattern of 3 pieces followed by 5 intrigued me, leading to the creation of this site.",
-  "This site serves as an exploration into the underlying geometry of these Kusudamas",
-];
+let modelData = ['baboon', 'bib', 'bozo', 'buttercup', 'champaka', 'chimneyw', 'colorslash', 'cupid', 'doubleslash', 'engage', 'lamduan', 'lipstick', 'littlefin', 'overlaphook', 'pansy', 'secretpocket', 'shuriken', 'stream', 'trap', 'triplegem', 'unicorn', 'vampire', 'venom', 'wrappetal'];
 
-// Creating Title
-let title = document.createElement("div");
-title.classList.add("title");
-title.textContent = "Kusudama";
-title.addEventListener("click", () => {
-  title.classList.add('fade');
-  setTimeout(() => {title.remove()}, 300);
-  createBackButton();
-  createNextButton();
-  showIntro();
-  });
-container.append(title);
+// loop through model array
+for (i = 0; i < modelData.length; i++) {
+   
+    //display images
+    let modelCard = document.createElement('div');
+    modelCard.innerHTML = `<a href='./subpages/${modelData[i]}.html'><img src='./assets/illustration/${modelData[i]}-illustration.png' class='model-card'></br><h1 class='card-name'>${modelData[i]}</h1></a>`;
+    modelCardContainer.append(modelCard);
 
-function showIntro() {
-  if (i <= 4) {
-    intro = document.createElement('p');
-    intro.classList.add('intro');
-    intro.textContent = introText[i];
-    container.insertBefore(intro, buttonContainer);
-  } else {
-    window.location.href = "./selection.html";
-  }
+    //create menu button
+    let menuButton = document.createElement('div');
+    menuButton.innerHTML = `<a href='./subpages/${modelData[i]}.html'><button class='menu-button'>${modelData[i]}</button></a>`;
+    menu.append(menuButton);
 }
 
-function removeIntro() {
-  intro.classList.add('fade');
-  setTimeout(() => {intro.remove()}, 300);
-}
+menu.addEventListener('mouseover', () => {
+    menu.classList.add('activated');
+    document.querySelectorAll('.menu-button').forEach((button) => {
+        button.style.display = 'block';
+    })
+})
 
-function createBackButton() {
-  back = document.createElement('button');
-  back.classList.add('button');
-  back.textContent = 'back';
-  back.addEventListener('click', () => {
-    removeIntro();
-    i--;
-    setTimeout(() => {showIntro()}, 301);
-  })
-  buttonContainer.append(back);
-}
-
-function createNextButton() {
-  next = document.createElement('button');
-  next.classList.add('button');
-  next.textContent = 'next';
-  next.addEventListener('click', () => {
-    removeIntro();
-    i++;
-    setTimeout(() => {showIntro()}, 301);
-  })
-  buttonContainer.append(next);
-}
-
+menu.addEventListener('mouseout', () => {
+    menu.classList.remove('activated');
+    document.querySelectorAll('.menu-button').forEach((button) => {
+        button.style.display = 'none';
+    })
+})
